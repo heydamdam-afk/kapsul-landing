@@ -101,5 +101,55 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+    color: #212B36;
   }
+}
+
+/* === Kapsul global styles === */
+.kapsul-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+@keyframes kapsulFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes kapsulFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes kapsulSlideUp { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.kapsul-feature-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.kapsul-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(33,43,54,0.08);
+  border-color: transparent;
+}
+.kapsul-mosaic-tile { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.kapsul-mosaic-tile:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(33,43,54,0.12); }
+
+/* Tablet */
+@media (max-width: 960px) {
+  .kapsul-container { padding: 0 24px; }
+  .kapsul-hero-grid { grid-template-columns: 1fr !important; gap: 50px !important; }
+  .kapsul-hero-grid > div:last-child { max-width: 280px; margin: 0 auto; }
+  .kapsul-b2b-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .kapsul-features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .kapsul-features-feed { grid-template-columns: 1fr !important; gap: 40px !important; padding: 40px 32px !important; text-align: center; }
+  .kapsul-features-feed > div:last-child { max-width: 260px; margin: 0 auto; }
+  .kapsul-steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .kapsul-pricing-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .kapsul-mosaic-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .kapsul-compare-head, .kapsul-compare-row { padding-left: 16px !important; padding-right: 16px !important; }
+  .kapsul-testimonials-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .kapsul-footer-grid { grid-template-columns: 1fr !important; text-align: center !important; }
+  .kapsul-footer-grid > div { text-align: center !important; justify-content: center !important; }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .kapsul-nav-links, .kapsul-nav-cta { display: none !important; }
+  .kapsul-burger { display: block !important; }
+  .kapsul-features-grid { grid-template-columns: 1fr !important; }
+  .kapsul-steps-grid { grid-template-columns: 1fr !important; }
+  .kapsul-compare-head, .kapsul-compare-row { grid-template-columns: 1.4fr 0.6fr 0.6fr 0.6fr !important; font-size: 12px; }
 }
