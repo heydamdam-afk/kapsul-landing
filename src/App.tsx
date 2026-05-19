@@ -8,6 +8,7 @@ import GrosEvenement from "./pages/GrosEvenement";
 import NouvelEvenement from "./pages/NouvelEvenement";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Invite from "./pages/Invite";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
