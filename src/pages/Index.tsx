@@ -260,7 +260,7 @@ const Pricing = ({ accent, accentLight }: { accent: string; accentLight: string 
         </div>
         <Reveal>
           <div style={{ textAlign: "center", marginTop: 60 }}>
-            <a href="#" style={{ fontFamily: '"Public Sans", sans-serif', fontSize: 15, color: "#637381", textDecoration: "none" }}>
+            <a href="/gros-evenement" style={{ fontFamily: '"Public Sans", sans-serif', fontSize: 15, color: "#637381", textDecoration: "none" }}>
               Vous organisez un grand événement ?{" "}
               <span style={{ color: accent, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4 }}>Voir les offres sur-mesure →</span>
             </a>
