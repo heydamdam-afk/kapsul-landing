@@ -471,25 +471,6 @@ const Step2 = ({ data, onBack, onPay }: { data: WizardData; onBack: () => void; 
         showPhone: true,
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
-        <button
-          type="button"
-          onClick={onBack}
-          style={{
-            background: "none",
-            border: "none",
-            padding: 0,
-            fontFamily: '"Public Sans", sans-serif',
-            fontSize: 13,
-            color: TEXT_3,
-            fontWeight: 500,
-            cursor: "pointer",
-          }}
-        >
-          ← Retour
-        </button>
-      </div>
-
       <h2 style={{ fontFamily: '"Josefin Sans", sans-serif', fontWeight: 700, fontSize: 24, color: TEXT, margin: "0 0 6px", letterSpacing: "-0.015em" }}>Validez votre formule</h2>
       <p style={{ fontFamily: '"Public Sans", sans-serif', fontSize: 14.5, color: TEXT_2, margin: "0 0 22px" }}>Un paiement unique, pas d'abonnement.</p>
 
