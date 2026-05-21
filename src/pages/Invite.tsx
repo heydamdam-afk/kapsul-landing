@@ -141,8 +141,6 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
   return (
     <form className="gi-screen" onSubmit={(e) => { e.preventDefault(); if (valid) onSubmit({ firstName, avatar }); }}>
       <StepDots step={2} />
-      <h2 className="gi-h1">Présentez-vous</h2>
-      <p className="gi-sub">Pour que les autres invités sachent qui a pris quelle photo.</p>
 
       <div className="gi-avatar-wrap">
         <button
@@ -160,6 +158,9 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
         <span className="gi-avatar-hint">Optionnel · JPG ou PNG · 5 Mo max</span>
         <input ref={fileRef} type="file" accept="image/*" onChange={handleAvatar} style={{ display: "none" }} />
       </div>
+
+      <h2 className="gi-h1">Présentez-vous</h2>
+      <p className="gi-sub">Pour que les autres invités sachent qui a pris quelle photo.</p>
 
       <div className="gi-field">
         <div className="gi-label-row"><span className="gi-label">Votre prénom</span><span className="gi-badge">Obligatoire</span></div>
