@@ -339,7 +339,7 @@ const Step1 = ({ data, setData, onNext }: { data: WizardData; setData: React.Dis
         </Link>
       </div>
 
-      <PlanBadge plan={plan} />
+      <PlanSelector selectedId={plan.id} onSelect={(id) => setData((d) => ({ ...d, plan: id }))} />
 
       <h2 style={{ fontFamily: '"Josefin Sans", sans-serif', fontWeight: 700, fontSize: 24, color: TEXT, margin: "0 0 8px", letterSpacing: "-0.015em" }}>Créez votre événement</h2>
       <p style={{ fontFamily: '"Public Sans", sans-serif', fontSize: 14.5, color: TEXT_2, margin: "0 0 22px", lineHeight: 1.5 }}>Quelques infos sur votre événement et c'est parti.</p>
