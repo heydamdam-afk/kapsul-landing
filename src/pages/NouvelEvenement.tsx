@@ -209,12 +209,7 @@ const PlanSelector = ({ selectedId, onSelect }: { selectedId: string; onSelect: 
     <div
       role="radiogroup"
       aria-label="Choix du plan"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(5, 1fr)",
-        gap: 8,
-        marginBottom: 18,
-      }}
+      className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-[18px]"
     >
       {visible.map((p) => {
         const active = p.id === selectedId;
