@@ -468,13 +468,11 @@ All colors MUST be HSL.
 .gi-stat-lbl { font-size:12px; color:rgba(255,255,255,0.8); letter-spacing:0.04em; text-transform:uppercase; margin-top:6px; }
 .gi-polaroid-stack { position:absolute; right:-40px; bottom:120px; width:280px; height:320px; z-index:0; pointer-events:none; }
 .gi-polaroid { position:absolute; width:200px; background:#fff; padding:12px 12px 36px; border-radius:6px; box-shadow:0 20px 50px rgba(33,43,54,0.25); }
-.gi-polaroid .gi-poly-img { aspect-ratio:1; border-radius:3px; background-size:cover; background-position:center; }
+.gi-polaroid .gi-poly-img { aspect-ratio:1; border-radius:3px; background-size:cover; background-position:center; background-color:#EEE; }
+.gi-poly-caption { font-family:'Caveat','Josefin Sans',cursive; font-size:20px; color:#212B36; text-align:center; margin-top:10px; line-height:1; }
 .gi-poly-1 { top:10px; left:0; --rot:rotate(-8deg); animation:giFloat 4s ease-in-out infinite; }
-.gi-poly-1 .gi-poly-img { background:linear-gradient(135deg,#FFD9D6,#FF6961); }
 .gi-poly-2 { top:60px; right:0; --rot:rotate(6deg); animation:giFloat 4.4s ease-in-out infinite 0.3s; }
-.gi-poly-2 .gi-poly-img { background:linear-gradient(135deg,#FFE2C0,#FFA94D); }
 .gi-poly-3 { top:150px; left:40px; --rot:rotate(-2deg); animation:giFloat 4.8s ease-in-out infinite 0.6s; }
-.gi-poly-3 .gi-poly-img { background:linear-gradient(135deg,#FFDCEC,#FF6BAA); }
 @keyframes giFloat { 0%,100% { transform: var(--rot) translateY(0); } 50% { transform: var(--rot) translateY(-8px); } }
 .gi-brand-footer { position:relative; z-index:1; display:flex; align-items:center; gap:14px; color:rgba(255,255,255,0.85); font-size:13px; }
 .gi-host-avatars { display:flex; }
