@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, FormEvent } from "react";
 import { Reveal } from "@/components/kapsul/Reveal";
 import { PhoneMockup } from "@/components/kapsul/PhoneMockup";
+import feedScreen from "@/assets/phone-feed-screen.png";
 
 const ACCENT = "#FF4842";
 
