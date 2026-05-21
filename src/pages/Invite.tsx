@@ -10,7 +10,6 @@ const EVENT = {
   validCode: "JULIE2026",
   hosts: ["Julie", "Thomas"],
   stats: [
-    { num: "142", lbl: "Invités" },
     { num: "3 jours", lbl: "Galerie ouverte" },
     { num: "∞", lbl: "Photos & vidéos" },
   ],
