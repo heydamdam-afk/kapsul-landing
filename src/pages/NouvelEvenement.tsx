@@ -149,7 +149,7 @@ type LeftProps = {
 
 const SplitLayout = ({ left, children }: { left?: LeftProps; children: ReactNode }) => {
   const L = {
-    title: "Votre galerie en quelques minutes",
+    title: "Votre galerie en quelques secondes",
     subtitle: "Partagez vos plus beaux moments avec tous vos invités.",
     bullets: [
       { icon: "📸", text: "Upload illimité depuis mobile" },
