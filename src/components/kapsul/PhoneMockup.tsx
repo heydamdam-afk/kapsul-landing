@@ -1,4 +1,6 @@
 import { CSSProperties } from "react";
+import gallScreen from "@/assets/phone-gallery-screen.png";
+
 
 interface Props {
   accent?: string;
