@@ -42,7 +42,7 @@ const FeedItem = ({
   </div>
 );
 
-export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,0.10)" }: Props) => {
+export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,0.10)", screenImage }: Props) => {
   const photoTiles = [
     { bg: "linear-gradient(135deg, #FFD9C9 0%, #FFB199 100%)" },
     { bg: "linear-gradient(135deg, #C9E4FF 0%, #A0CBF5 100%)" },
