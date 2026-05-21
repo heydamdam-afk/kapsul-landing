@@ -10,23 +10,17 @@ const EVENT = {
   validCode: "JULIE2026",
   hosts: ["Julie", "Thomas"],
   stats: [
-    { num: "142", lbl: "Invités" },
     { num: "3 jours", lbl: "Galerie ouverte" },
     { num: "∞", lbl: "Photos & vidéos" },
   ],
 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PALETTES: [string, string][] = [
-  ["#FFD9D6", "#FF6961"], ["#FFE2C0", "#FFA94D"], ["#D6E9FF", "#669EFF"],
-  ["#FFDCEC", "#FF6BAA"], ["#D9F2E1", "#3DBA76"], ["#E5DBFF", "#9A7BFF"],
-  ["#FFF1B8", "#FFC95A"], ["#E1F4F4", "#5BC0BE"], ["#FFE6D5", "#FF8A65"],
-];
+const FIRSTNAME_RE = /^[A-Za-zÀ-ÖØ-öø-ÿ'’-]+$/;
 
 const BrandPanel = () => (
   <aside className="gi-brand">
     <div className="gi-brand-top">
       <Link to="/" className="gi-logo"><span className="gi-logo-dot" />Kapsul</Link>
-      <Link to="/" className="gi-back">← Retour au site</Link>
     </div>
     <div className="gi-hero">
       <span className="gi-eyebrow"><span className="gi-eyebrow-dot" />Galerie privée</span>
@@ -57,22 +51,21 @@ const BrandPanel = () => (
     </div>
     <div className="gi-brand-footer">
       <div className="gi-host-avatars">
-        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFD9D6,#FF6961)" }} />
-        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFE2C0,#FFA94D)" }} />
+        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFD9D6,#FF6961)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700 }}>J</div>
       </div>
-      <span>Organisé par {EVENT.hosts.join(" & ")}</span>
+      <span>Organisé par {EVENT.hosts[0]}</span>
     </div>
   </aside>
 );
 
-const StepDots = ({ step }: { step: 1 | 2 | 3 }) => (
+const StepDots = ({ step }: { step: 1 | 2 }) => (
   <div className="gi-step">
     <div className="gi-dots">
-      {[1, 2, 3].map((n) => (
+      {[1, 2].map((n) => (
         <span key={n} className={`gi-dot ${step === n ? "is-active" : step > n ? "is-done" : ""}`} />
       ))}
     </div>
-    Étape {step} sur 3
+    Étape {step} sur 2
   </div>
 );
 
@@ -135,7 +128,7 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
   const [firstName, setFirstName] = useState("");
   const [avatar, setAvatar] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
-  const valid = firstName.trim().length > 0;
+  const valid = FIRSTNAME_RE.test(firstName.trim());
 
   const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -170,7 +163,18 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
 
       <div className="gi-field">
         <div className="gi-label-row"><span className="gi-label">Votre prénom</span><span className="gi-badge">Obligatoire</span></div>
-        <input className="gi-input" type="text" placeholder="Votre prénom" value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete="given-name" autoFocus />
+        <input
+          className={`gi-input ${firstName.trim() && !FIRSTNAME_RE.test(firstName.trim()) ? "is-error" : ""}`}
+          type="text"
+          placeholder="Votre prénom"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value.replace(/\s+/g, " ").trimStart())}
+          autoComplete="given-name"
+          autoFocus
+        />
+        {firstName.trim() && !FIRSTNAME_RE.test(firstName.trim()) && (
+          <div className="gi-error"><span className="gi-error-dot">!</span>Un seul prénom (sans espace ni chiffre).</div>
+        )}
       </div>
 
       <div className="gi-cta-row">
@@ -181,26 +185,10 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
   );
 };
 
-const Screen3 = ({ profile }: { profile: { firstName: string } }) => (
-  <div className="gi-screen">
-    <StepDots step={3} />
-    <h2 className="gi-h1">Bienvenue {profile.firstName} !</h2>
-    <p className="gi-sub">Vous êtes dans la galerie. Ajoutez vos premières photos pour commencer.</p>
-    <div className="gi-success"><span className="gi-success-dot">✓</span>Accès confirmé · {EVENT.name}</div>
-    <div className="gi-gallery-grid">
-      {Array.from({ length: 9 }).map((_, i) => {
-        const [g1, g2] = PALETTES[i % PALETTES.length];
-        return <div key={i} className="gi-gallery-tile" style={{ ["--g1" as never]: g1, ["--g2" as never]: g2 }} />;
-      })}
-    </div>
-    <button type="button" className="gi-cta">＋ Ajouter mes premières photos</button>
-  </div>
-);
-
 const Invite = () => {
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [step, setStep] = useState<1 | 2>(1);
   const [, setEmailFromStep1] = useState("");
-  const [profile, setProfile] = useState<{ firstName: string; avatar: string | null } | null>(null);
+  const [, setProfile] = useState<{ firstName: string; avatar: string | null } | null>(null);
 
   return (
     <div className="gi-shell">
@@ -208,8 +196,7 @@ const Invite = () => {
       <main className="gi-form-panel">
         <div className="gi-form-inner">
           {step === 1 && <Screen1 onSubmit={({ email }) => { setEmailFromStep1(email); setStep(2); }} />}
-          {step === 2 && <Screen2 onBack={() => setStep(1)} onSubmit={(p) => { setProfile(p); setStep(3); }} />}
-          {step === 3 && profile && <Screen3 profile={profile} />}
+          {step === 2 && <Screen2 onBack={() => setStep(1)} onSubmit={(p) => { setProfile(p); }} />}
         </div>
       </main>
     </div>
