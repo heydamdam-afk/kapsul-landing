@@ -62,14 +62,14 @@ const BrandPanel = () => (
   </aside>
 );
 
-const StepDots = ({ step }: { step: 1 | 2 | 3 }) => (
+const StepDots = ({ step }: { step: 1 | 2 }) => (
   <div className="gi-step">
     <div className="gi-dots">
-      {[1, 2, 3].map((n) => (
+      {[1, 2].map((n) => (
         <span key={n} className={`gi-dot ${step === n ? "is-active" : step > n ? "is-done" : ""}`} />
       ))}
     </div>
-    Étape {step} sur 3
+    Étape {step} sur 2
   </div>
 );
 
