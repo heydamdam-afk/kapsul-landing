@@ -1,5 +1,8 @@
 import { useRef, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import polyMariage from "@/assets/invite-mariage.jpg";
+import polySoiree from "@/assets/invite-soiree.jpg";
+import polyEvjf from "@/assets/invite-evjf.jpg";
 
 const EVENT = {
   name: "Mariage de Julie & Thomas",
@@ -39,9 +42,18 @@ const BrandPanel = () => (
       </div>
     </div>
     <div className="gi-polaroid-stack" aria-hidden>
-      <div className="gi-polaroid gi-poly-1"><div className="gi-poly-img" /></div>
-      <div className="gi-polaroid gi-poly-2"><div className="gi-poly-img" /></div>
-      <div className="gi-polaroid gi-poly-3"><div className="gi-poly-img" /></div>
+      <div className="gi-polaroid gi-poly-1">
+        <div className="gi-poly-img" style={{ backgroundImage: `url(${polyMariage})` }} />
+        <div className="gi-poly-caption">Mariage</div>
+      </div>
+      <div className="gi-polaroid gi-poly-2">
+        <div className="gi-poly-img" style={{ backgroundImage: `url(${polySoiree})` }} />
+        <div className="gi-poly-caption">Soirée entre amis</div>
+      </div>
+      <div className="gi-polaroid gi-poly-3">
+        <div className="gi-poly-img" style={{ backgroundImage: `url(${polyEvjf})` }} />
+        <div className="gi-poly-caption">EVJF</div>
+      </div>
     </div>
     <div className="gi-brand-footer">
       <div className="gi-host-avatars">
