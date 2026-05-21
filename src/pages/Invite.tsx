@@ -190,26 +190,10 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
   );
 };
 
-const Screen3 = ({ profile }: { profile: { firstName: string } }) => (
-  <div className="gi-screen">
-    <StepDots step={3} />
-    <h2 className="gi-h1">Bienvenue {profile.firstName} !</h2>
-    <p className="gi-sub">Vous êtes dans la galerie. Ajoutez vos premières photos pour commencer.</p>
-    <div className="gi-success"><span className="gi-success-dot">✓</span>Accès confirmé · {EVENT.name}</div>
-    <div className="gi-gallery-grid">
-      {Array.from({ length: 9 }).map((_, i) => {
-        const [g1, g2] = PALETTES[i % PALETTES.length];
-        return <div key={i} className="gi-gallery-tile" style={{ ["--g1" as never]: g1, ["--g2" as never]: g2 }} />;
-      })}
-    </div>
-    <button type="button" className="gi-cta">＋ Ajouter mes premières photos</button>
-  </div>
-);
-
 const Invite = () => {
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [step, setStep] = useState<1 | 2>(1);
   const [, setEmailFromStep1] = useState("");
-  const [profile, setProfile] = useState<{ firstName: string; avatar: string | null } | null>(null);
+  const [, setProfile] = useState<{ firstName: string; avatar: string | null } | null>(null);
 
   return (
     <div className="gi-shell">
@@ -217,8 +201,7 @@ const Invite = () => {
       <main className="gi-form-panel">
         <div className="gi-form-inner">
           {step === 1 && <Screen1 onSubmit={({ email }) => { setEmailFromStep1(email); setStep(2); }} />}
-          {step === 2 && <Screen2 onBack={() => setStep(1)} onSubmit={(p) => { setProfile(p); setStep(3); }} />}
-          {step === 3 && profile && <Screen3 profile={profile} />}
+          {step === 2 && <Screen2 onBack={() => setStep(1)} onSubmit={(p) => { setProfile(p); }} />}
         </div>
       </main>
     </div>
