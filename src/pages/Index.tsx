@@ -187,7 +187,7 @@ const Features = ({ accent, accentLight }: { accent: string; accentLight: string
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <PhoneMockup accent={accent} accentLight={accentLight} />
+              <PhoneMockup accent={accent} accentLight={accentLight} screenImage={feedScreen} />
             </div>
           </div>
         </Reveal>
