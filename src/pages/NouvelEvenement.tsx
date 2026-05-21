@@ -203,35 +203,118 @@ type WizardData = {
   email: string;
 };
 
-const PlanBadge = ({ plan }: { plan: Plan }) => {
-  const isFree = plan.price === 0;
-  const isUnlimited = plan.id === "illimite";
-  const styles: CSSProperties = isUnlimited
-    ? { background: "#212B36", color: "#fff", border: "none" }
-    : isFree
-    ? { background: "#F4F6F8", color: SUCCESS, border: "1px solid #E0E0E0" }
-    : { background: "#F4F6F8", color: TEXT, border: "1px solid #E0E0E0" };
+const PlanSelector = ({ selectedId, onSelect }: { selectedId: string; onSelect: (id: string) => void }) => {
+  const visible = PLANS.filter((p) => p.id !== "decouverte");
   return (
-    <Link
-      to="/#Tarifs"
+    <div
+      role="radiogroup"
+      aria-label="Choix du plan"
       style={{
-        ...styles,
-        display: "inline-flex",
-        alignItems: "center",
+        display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
         gap: 8,
-        padding: "6px 16px",
-        borderRadius: 100,
-        textDecoration: "none",
-        fontFamily: '"Public Sans", sans-serif',
-        fontSize: 14,
-        fontWeight: 500,
         marginBottom: 18,
       }}
     >
-      Plan {plan.name} — {isFree ? "Gratuit" : `${plan.price}€`}
-      <span style={{ opacity: 0.5, fontSize: 12 }}>·</span>
-      <span style={{ opacity: 0.7, fontSize: 12, fontWeight: 500 }}>Changer</span>
-    </Link>
+      {visible.map((p) => {
+        const active = p.id === selectedId;
+        const isUnlimited = p.id === "illimite";
+        return (
+          <button
+            key={p.id}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => onSelect(p.id)}
+            style={{
+              position: "relative",
+              textAlign: "left",
+              padding: "10px 10px 11px",
+              background: active ? "#fff" : "#F8F9FA",
+              border: `1.5px solid ${active ? ACCENT : BORDER}`,
+              borderRadius: 12,
+              cursor: "pointer",
+              transition: "all 0.18s",
+              boxShadow: active ? `0 0 0 4px ${ACCENT_LIGHT}` : "none",
+              fontFamily: '"Public Sans", sans-serif',
+              minWidth: 0,
+            }}
+          >
+            {p.popular && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: -7,
+                  right: 6,
+                  background: ACCENT,
+                  color: "#fff",
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  padding: "2px 6px",
+                  borderRadius: 100,
+                }}
+              >
+                Top
+              </span>
+            )}
+            <div
+              style={{
+                fontSize: 11.5,
+                fontWeight: 700,
+                color: active ? ACCENT : TEXT_2,
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {p.name}
+            </div>
+            <div
+              style={{
+                fontFamily: '"Josefin Sans", sans-serif',
+                fontWeight: 700,
+                fontSize: 18,
+                color: TEXT,
+                letterSpacing: "-0.02em",
+                marginTop: 2,
+                lineHeight: 1.1,
+              }}
+            >
+              {isUnlimited ? `${p.price}€` : `${p.price}€`}
+            </div>
+            <div
+              style={{
+                fontSize: 11,
+                color: TEXT_2,
+                marginTop: 4,
+                lineHeight: 1.3,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {p.photos}
+            </div>
+            <div
+              style={{
+                fontSize: 10.5,
+                color: TEXT_3,
+                marginTop: 1,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {p.invites}
+            </div>
+          </button>
+        );
+      })}
+    </div>
   );
 };
 
@@ -256,7 +339,7 @@ const Step1 = ({ data, setData, onNext }: { data: WizardData; setData: React.Dis
         </Link>
       </div>
 
-      <PlanBadge plan={plan} />
+      <PlanSelector selectedId={plan.id} onSelect={(id) => setData((d) => ({ ...d, plan: id }))} />
 
       <h2 style={{ fontFamily: '"Josefin Sans", sans-serif', fontWeight: 700, fontSize: 24, color: TEXT, margin: "0 0 8px", letterSpacing: "-0.015em" }}>Créez votre événement</h2>
       <p style={{ fontFamily: '"Public Sans", sans-serif', fontSize: 14.5, color: TEXT_2, margin: "0 0 22px", lineHeight: 1.5 }}>Quelques infos sur votre événement et c'est parti.</p>
