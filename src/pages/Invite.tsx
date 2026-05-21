@@ -16,11 +16,6 @@ const EVENT = {
 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FIRSTNAME_RE = /^[A-Za-zÀ-ÖØ-öø-ÿ'’-]+$/;
-const PALETTES: [string, string][] = [
-  ["#FFD9D6", "#FF6961"], ["#FFE2C0", "#FFA94D"], ["#D6E9FF", "#669EFF"],
-  ["#FFDCEC", "#FF6BAA"], ["#D9F2E1", "#3DBA76"], ["#E5DBFF", "#9A7BFF"],
-  ["#FFF1B8", "#FFC95A"], ["#E1F4F4", "#5BC0BE"], ["#FFE6D5", "#FF8A65"],
-];
 
 const BrandPanel = () => (
   <aside className="gi-brand">
