@@ -62,49 +62,9 @@ export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,
       <div style={{ background: "#212B36", borderRadius: 44, padding: 10, position: "relative" }}>
         <div style={{ background: "#fff", borderRadius: 36, overflow: "hidden", position: "relative", aspectRatio: "9 / 18.5" }}>
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 90, height: 22, background: "#212B36", borderRadius: 14, zIndex: 10 }} />
-          <div style={{ height: 36 }} />
-          <div style={{ background: accent, padding: "14px 18px 18px", color: "#fff" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, opacity: 0.85, fontFamily: '"Public Sans", sans-serif', marginBottom: 6 }}>
-              <span>· LIVE</span>
-              <span style={{ display: "flex", gap: 4 }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#fff", opacity: 0.6 }} />
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#fff" }} />
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#fff", opacity: 0.6 }} />
-              </span>
-            </div>
-            <div style={{ fontFamily: '"Josefin Sans", sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.1, marginBottom: 4 }}>Sarah & Léo</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: '"Public Sans", sans-serif', fontSize: 11, opacity: 0.9 }}>
-              <span>847 photos</span>
-              <span style={{ width: 3, height: 3, borderRadius: "50%", background: "#fff", opacity: 0.6 }} />
-              <span>54 invités</span>
-              <span style={{ width: 3, height: 3, borderRadius: "50%", background: "#fff", opacity: 0.6 }} />
-              <span>14 J restants</span>
-            </div>
-          </div>
-
-          <div style={{ padding: "14px 14px 10px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-            {photoTiles.map((t, i) => (
-              <div key={i} style={{ aspectRatio: "1", background: t.bg, borderRadius: 10, position: "relative", overflow: "hidden" }}>
-                {i === 0 && (
-                  <div style={{ position: "absolute", top: 6, right: 6, background: "rgba(255,255,255,0.9)", color: accent, fontFamily: '"Public Sans", sans-serif', fontSize: 9, fontWeight: 700, padding: "2px 6px", borderRadius: 8 }}>♥ 12</div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div style={{ padding: "6px 14px" }}>
-            <FeedItem avatar="C" avatarColor="#FFB199" name="Camille" action="a ajouté 8 photos" time="à l'instant" likes={3} accent={accent} />
-            <FeedItem avatar="M" avatarColor="#A0CBF5" name="Marc" action="a aimé une photo" time="il y a 1 min" likes={null} accent={accent} />
-          </div>
-
-          <div style={{ position: "absolute", bottom: 14, left: 14, right: 14 }}>
-            <button style={{ width: "100%", background: accent, color: "#fff", border: "none", borderRadius: 100, padding: "14px", fontFamily: '"Public Sans", sans-serif', fontWeight: 600, fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: `0 8px 20px ${accent}55`, cursor: "pointer" }}>
-              <span style={{ fontSize: 18, lineHeight: 1 }}>+</span>
-              Ajouter mes photos
-            </button>
-            <div style={{ width: 100, height: 4, background: "#212B36", borderRadius: 2, margin: "12px auto 0", opacity: 0.3 }} />
-          </div>
+          <img src={gallScreen} alt="Aperçu galerie Kapsul" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </div>
+
       </div>
 
       <div style={{ position: "absolute", top: 80, right: -30, background: "#fff", borderRadius: 14, padding: "10px 14px", boxShadow: "0 12px 30px rgba(33,43,54,0.15)", display: "flex", alignItems: "center", gap: 10, animation: "kapsulFloat 3s ease-in-out infinite" }}>
