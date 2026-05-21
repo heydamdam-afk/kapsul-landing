@@ -60,11 +60,10 @@ export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,
   return (
     <div style={wrap}>
       <div style={{ background: "#212B36", borderRadius: 44, padding: 10, position: "relative" }}>
-        <div style={{ background: "#212B36", borderRadius: 36, overflow: "hidden", position: "relative", aspectRatio: "9 / 18.5" }}>
+        <div style={{ background: "#fff", borderRadius: 36, overflow: "hidden", position: "relative", aspectRatio: "9 / 18.5" }}>
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 90, height: 22, background: "#212B36", borderRadius: 14, zIndex: 10 }} />
-          <img src={gallScreen} alt="Aperçu galerie Kapsul" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block" }} />
+          <img src={gallScreen} alt="Aperçu galerie Kapsul" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
         </div>
-
 
       </div>
 
