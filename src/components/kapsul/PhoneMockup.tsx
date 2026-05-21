@@ -5,6 +5,7 @@ import gallScreen from "@/assets/phone-gallery-screen.png";
 interface Props {
   accent?: string;
   accentLight?: string;
+  screenImage?: string;
 }
 
 const FeedItem = ({
@@ -41,7 +42,7 @@ const FeedItem = ({
   </div>
 );
 
-export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,0.10)" }: Props) => {
+export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,0.10)", screenImage }: Props) => {
   const photoTiles = [
     { bg: "linear-gradient(135deg, #FFD9C9 0%, #FFB199 100%)" },
     { bg: "linear-gradient(135deg, #C9E4FF 0%, #A0CBF5 100%)" },
@@ -62,7 +63,7 @@ export const PhoneMockup = ({ accent = "#FF4842", accentLight = "rgba(255,72,66,
       <div style={{ background: "#212B36", borderRadius: 44, padding: 10, position: "relative" }}>
         <div style={{ background: "#fff", borderRadius: 36, overflow: "hidden", position: "relative", aspectRatio: "9 / 18.5" }}>
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 90, height: 22, background: "#212B36", borderRadius: 14, zIndex: 10 }} />
-          <img src={gallScreen} alt="Aperçu galerie Kapsul" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+          <img src={screenImage ?? gallScreen} alt="Aperçu galerie Kapsul" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
         </div>
 
       </div>

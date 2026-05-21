@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, FormEvent } from "react";
 import { Reveal } from "@/components/kapsul/Reveal";
 import { PhoneMockup } from "@/components/kapsul/PhoneMockup";
+import feedScreen from "@/assets/phone-feed-screen.png";
 
 const ACCENT = "#FF4842";
 
@@ -186,7 +187,7 @@ const Features = ({ accent, accentLight }: { accent: string; accentLight: string
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <PhoneMockup accent={accent} accentLight={accentLight} />
+              <PhoneMockup accent={accent} accentLight={accentLight} screenImage={feedScreen} />
             </div>
           </div>
         </Reveal>
