@@ -5,6 +5,7 @@ import gallScreen from "@/assets/phone-gallery-screen.png";
 interface Props {
   accent?: string;
   accentLight?: string;
+  screenImage?: string;
 }
 
 const FeedItem = ({
