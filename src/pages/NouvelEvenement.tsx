@@ -369,6 +369,7 @@ const Step1 = ({ data, setData, onNext }: { data: WizardData; setData: React.Dis
         <input
           type="date"
           value={data.date}
+          min={new Date().toISOString().split("T")[0]}
           onChange={(e) => setData((d) => ({ ...d, date: e.target.value }))}
           style={{
             width: "100%",
