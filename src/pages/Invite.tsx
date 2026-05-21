@@ -167,7 +167,18 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
 
       <div className="gi-field">
         <div className="gi-label-row"><span className="gi-label">Votre prénom</span><span className="gi-badge">Obligatoire</span></div>
-        <input className="gi-input" type="text" placeholder="Votre prénom" value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete="given-name" autoFocus />
+        <input
+          className={`gi-input ${firstName.trim() && !FIRSTNAME_RE.test(firstName.trim()) ? "is-error" : ""}`}
+          type="text"
+          placeholder="Votre prénom"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value.replace(/\s+/g, " ").trimStart())}
+          autoComplete="given-name"
+          autoFocus
+        />
+        {firstName.trim() && !FIRSTNAME_RE.test(firstName.trim()) && (
+          <div className="gi-error"><span className="gi-error-dot">!</span>Un seul prénom (sans espace ni chiffre).</div>
+        )}
       </div>
 
       <div className="gi-cta-row">
