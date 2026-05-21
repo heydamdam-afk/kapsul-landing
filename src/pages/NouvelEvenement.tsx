@@ -204,14 +204,14 @@ type WizardData = {
 };
 
 const PlanSelector = ({ selectedId, onSelect }: { selectedId: string; onSelect: (id: string) => void }) => {
-  const visible = PLANS.filter((p) => p.id !== "decouverte");
+  const visible = PLANS;
   return (
     <div
       role="radiogroup"
       aria-label="Choix du plan"
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
+        gridTemplateColumns: "repeat(5, 1fr)",
         gap: 8,
         marginBottom: 18,
       }}
