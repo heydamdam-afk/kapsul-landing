@@ -25,7 +25,6 @@ const BrandPanel = () => (
   <aside className="gi-brand">
     <div className="gi-brand-top">
       <Link to="/" className="gi-logo"><span className="gi-logo-dot" />Kapsul</Link>
-      <Link to="/" className="gi-back">← Retour au site</Link>
     </div>
     <div className="gi-hero">
       <span className="gi-eyebrow"><span className="gi-eyebrow-dot" />Galerie privée</span>
