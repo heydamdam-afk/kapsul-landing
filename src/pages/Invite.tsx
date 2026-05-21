@@ -55,10 +55,9 @@ const BrandPanel = () => (
     </div>
     <div className="gi-brand-footer">
       <div className="gi-host-avatars">
-        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFD9D6,#FF6961)" }} />
-        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFE2C0,#FFA94D)" }} />
+        <div className="gi-host-avatar" style={{ background: "linear-gradient(135deg,#FFD9D6,#FF6961)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700 }}>J</div>
       </div>
-      <span>Organisé par {EVENT.hosts.join(" & ")}</span>
+      <span>Organisé par {EVENT.hosts[0]}</span>
     </div>
   </aside>
 );
