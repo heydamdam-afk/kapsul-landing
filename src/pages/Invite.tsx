@@ -133,7 +133,7 @@ const Screen2 = ({ onSubmit, onBack }: { onSubmit: (p: { firstName: string; avat
   const [firstName, setFirstName] = useState("");
   const [avatar, setAvatar] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
-  const valid = firstName.trim().length > 0;
+  const valid = FIRSTNAME_RE.test(firstName.trim());
 
   const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
